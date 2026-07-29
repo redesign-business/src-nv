@@ -1,17 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Home as HomeIcon,
+  PencilRuler,
+  Wrench,
+  Plus,
+  CookingPot,
+  Bath,
+  Phone,
+  ChevronDown,
+  ShieldCheck,
+} from "lucide-react";
 
 const CTA_HREF = "/free-estimate";
 const CTA_LABEL = "Free Estimate";
 const PHONE = "775-686-9109";
 
 const services = [
-  { title: "Custom Home Builder", icon: "🏠" },
-  { title: "New Construction Design", icon: "📐" },
-  { title: "Remodeling & Renovation", icon: "🔨" },
-  { title: "Home Additions", icon: "➕" },
-  { title: "Kitchen Remodeling", icon: "🍳" },
-  { title: "Bathroom Remodeling", icon: "🛁" },
+  { title: "Custom Home Builder", icon: HomeIcon },
+  { title: "New Construction Design", icon: PencilRuler },
+  { title: "Remodeling & Renovation", icon: Wrench },
+  { title: "Home Additions", icon: Plus },
+  { title: "Kitchen Remodeling", icon: CookingPot },
+  { title: "Bathroom Remodeling", icon: Bath },
 ];
 
 const beforeAfterProjects = [
@@ -51,7 +62,7 @@ const faqs = [
   },
   {
     q: "What makes your company different from other contractors?",
-    a: "Our commitment to client satisfaction sets us apart. We take a personalized approach to each project, ensuring open communication and transparency from start to finish. We pride ourselves on innovative solutions and timely completion of projects.",
+    a: "Our commitment to client satisfaction sets us apart. We take a personalized approach to each project, ensuring open communication and transparency from start to finish. We pride ourselves on innovative solutions and timely completion.",
   },
   {
     q: "Do you handle permits and inspections?",
@@ -91,7 +102,7 @@ function Header() {
             priority
           />
         </Link>
-        <nav className="hidden lg:flex items-center gap-8 text-[15px] font-medium text-zinc-700">
+        <nav className="hidden lg:flex items-center gap-8 text-base font-medium text-zinc-700">
           <Link href="/" className="hover:text-accent transition-colors">
             Home
           </Link>
@@ -108,13 +119,14 @@ function Header() {
         <div className="flex items-center gap-4">
           <a
             href={`tel:${PHONE}`}
-            className="hidden sm:block text-[15px] font-semibold text-zinc-800 hover:text-accent transition-colors"
+            className="hidden sm:flex items-center gap-1.5 text-base font-semibold text-zinc-800 hover:text-accent transition-colors"
           >
+            <Phone size={16} aria-hidden="true" />
             {PHONE}
           </a>
           <a
             href={CTA_HREF}
-            className="inline-flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-hover transition-colors shadow-sm"
+            className="inline-flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-base font-semibold text-white hover:bg-accent-hover transition-colors shadow-sm"
           >
             {CTA_LABEL}
           </a>
@@ -140,13 +152,11 @@ function Hero() {
       </div>
       <div className="relative z-10 mx-auto max-w-7xl px-6 w-full">
         <div className="max-w-2xl">
-          <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-4">
+          <p className="text-accent text-base font-semibold tracking-widest uppercase mb-4">
             Sparks, Nevada
           </p>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6 tracking-tight">
-            Building the Future
-            <br />
-            and Restoring the Past
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-6 tracking-tight">
+            Building the Future and Restoring the Past
           </h1>
           <p className="text-lg sm:text-xl text-zinc-300 leading-relaxed mb-10 max-w-xl">
             Your innovative homebuilder serving Northern Nevada, dedicated to
@@ -155,13 +165,13 @@ function Hero() {
           <div className="flex flex-col sm:flex-row gap-4">
             <a
               href={CTA_HREF}
-              className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 text-base font-semibold text-white hover:bg-accent-hover transition-colors shadow-lg"
+              className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white hover:bg-accent-hover transition-colors shadow-lg"
             >
               Get Your {CTA_LABEL}
             </a>
             <a
               href={`tel:${PHONE}`}
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-8 py-4 text-base font-semibold text-white hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-8 py-4 text-lg font-semibold text-white hover:bg-white/10 transition-colors"
             >
               Call {PHONE}
             </a>
@@ -177,7 +187,7 @@ function ServicesSection() {
     <section id="services" className="py-24 px-6">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">
+          <p className="text-accent text-base font-semibold tracking-widest uppercase mb-3">
             What We Do
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-tight">
@@ -194,13 +204,11 @@ function ServicesSection() {
               key={service.title}
               className="group flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-zinc-200/60 hover:border-accent/30 hover:shadow-lg transition-all"
             >
-              <span
-                className="text-3xl mb-4"
-                role="img"
+              <service.icon
+                size={32}
+                className="text-accent mb-4"
                 aria-hidden="true"
-              >
-                {service.icon}
-              </span>
+              />
               <h3 className="font-display font-semibold text-foreground text-base">
                 {service.title}
               </h3>
@@ -210,7 +218,7 @@ function ServicesSection() {
         <div className="mt-10 text-center">
           <a
             href={CTA_HREF}
-            className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-base font-semibold text-white hover:bg-accent-hover transition-colors shadow-sm"
+            className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-lg font-semibold text-white hover:bg-accent-hover transition-colors shadow-sm"
           >
             Get Your {CTA_LABEL}
           </a>
@@ -225,7 +233,7 @@ function GallerySection() {
     <section id="gallery" className="py-24 px-6 bg-zinc-900">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">
+          <p className="text-accent text-base font-semibold tracking-widest uppercase mb-3">
             Our Work
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4 tracking-tight">
@@ -251,7 +259,7 @@ function GallerySection() {
                     className="object-cover"
                     sizes="(max-width: 768px) 50vw, 33vw"
                   />
-                  <span className="absolute top-3 left-3 bg-zinc-900/80 text-white text-xs font-semibold px-2.5 py-1 rounded-md">
+                  <span className="absolute top-3 left-3 bg-zinc-900/80 text-white text-base font-semibold px-3 py-1 rounded-md">
                     Before
                   </span>
                 </div>
@@ -263,7 +271,7 @@ function GallerySection() {
                     className="object-cover"
                     sizes="(max-width: 768px) 50vw, 33vw"
                   />
-                  <span className="absolute top-3 right-3 bg-accent text-white text-xs font-semibold px-2.5 py-1 rounded-md">
+                  <span className="absolute top-3 right-3 bg-accent text-white text-base font-semibold px-3 py-1 rounded-md">
                     After
                   </span>
                 </div>
@@ -279,7 +287,7 @@ function GallerySection() {
         <div className="mt-12 text-center">
           <a
             href={CTA_HREF}
-            className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-base font-semibold text-white hover:bg-accent-hover transition-colors shadow-sm"
+            className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-lg font-semibold text-white hover:bg-accent-hover transition-colors shadow-sm"
           >
             Get Your {CTA_LABEL}
           </a>
@@ -327,7 +335,7 @@ function ProcessSection() {
     <section className="py-24 px-6 bg-background">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">
+          <p className="text-accent text-base font-semibold tracking-widest uppercase mb-3">
             How We Work
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-tight">
@@ -349,7 +357,7 @@ function ProcessSection() {
                 <h3 className="font-display font-semibold text-foreground text-lg mb-2">
                   {step.title}
                 </h3>
-                <p className="text-slate-light text-[15px] leading-relaxed">
+                <p className="text-slate-light text-base leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -366,25 +374,12 @@ function CredentialsBanner() {
     <section className="py-16 px-6 bg-warm">
       <div className="mx-auto max-w-4xl text-center">
         <div className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full border border-zinc-200/60 mb-6">
-          <svg
-            className="w-5 h-5 text-accent"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-            />
-          </svg>
-          <span className="text-sm font-semibold text-foreground">
+          <ShieldCheck size={20} className="text-accent" aria-hidden="true" />
+          <span className="text-base font-semibold text-foreground">
             Licensed &amp; Fully Insured
           </span>
         </div>
-        <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-4 tracking-tight">
+        <h2 className="font-display text-3xl font-bold text-foreground mb-4 tracking-tight">
           Built on Trust, Backed by Credentials
         </h2>
         <p className="text-slate-light text-lg max-w-2xl mx-auto leading-relaxed mb-8">
@@ -395,7 +390,7 @@ function CredentialsBanner() {
         </p>
         <a
           href={CTA_HREF}
-          className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-base font-semibold text-white hover:bg-accent-hover transition-colors shadow-sm"
+          className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-lg font-semibold text-white hover:bg-accent-hover transition-colors shadow-sm"
         >
           Get Your {CTA_LABEL}
         </a>
@@ -409,7 +404,7 @@ function FAQSection() {
     <section id="faq" className="py-24 px-6 bg-white">
       <div className="mx-auto max-w-3xl">
         <div className="text-center mb-14">
-          <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">
+          <p className="text-accent text-base font-semibold tracking-widest uppercase mb-3">
             Got Questions?
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-tight">
@@ -422,24 +417,15 @@ function FAQSection() {
               key={i}
               className="group border border-zinc-200 rounded-xl overflow-hidden"
             >
-              <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-foreground font-semibold text-[15px] leading-snug hover:text-accent transition-colors list-none">
+              <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-foreground font-semibold text-base leading-snug hover:text-accent transition-colors list-none">
                 {faq.q}
-                <svg
-                  className="w-5 h-5 flex-shrink-0 ml-3 text-zinc-400 group-open:rotate-180 transition-transform"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
+                <ChevronDown
+                  size={20}
+                  className="flex-shrink-0 ml-3 text-zinc-400 group-open:rotate-180 transition-transform"
                   aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
+                />
               </summary>
-              <div className="px-6 pb-5 text-slate-light text-[15px] leading-relaxed">
+              <div className="px-6 pb-5 text-slate-light text-base leading-relaxed">
                 {faq.a}
               </div>
             </details>
@@ -448,7 +434,7 @@ function FAQSection() {
         <div className="mt-12 text-center">
           <a
             href={CTA_HREF}
-            className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-base font-semibold text-white hover:bg-accent-hover transition-colors shadow-sm"
+            className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-lg font-semibold text-white hover:bg-accent-hover transition-colors shadow-sm"
           >
             Get Your {CTA_LABEL}
           </a>
@@ -475,12 +461,12 @@ function FinalCTA() {
           Start Your Project Today
         </h2>
         <p className="text-zinc-300 text-lg leading-relaxed mb-10">
-          Ready to build your dream home? Fill out the contact form and we will be
-          in touch as soon as possible.
+          Ready to build your dream home? Fill out the contact form and we will
+          be in touch as soon as possible.
         </p>
         <a
           href={CTA_HREF}
-          className="inline-flex items-center justify-center rounded-lg bg-accent px-10 py-5 text-lg font-semibold text-white hover:bg-accent-hover transition-colors shadow-xl"
+          className="inline-flex items-center justify-center rounded-lg bg-accent px-10 py-5 text-xl font-semibold text-white hover:bg-accent-hover transition-colors shadow-xl"
         >
           Get Your Free Estimate
         </a>
@@ -504,44 +490,64 @@ function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-6 mb-8 text-zinc-400">
             <a
               href={`tel:${PHONE}`}
-              className="text-sm hover:text-white transition-colors"
+              className="text-base hover:text-white transition-colors"
             >
               {PHONE}
             </a>
-            <span className="hidden sm:block text-zinc-700">|</span>
+            <span className="hidden sm:block text-zinc-700" aria-hidden="true">
+              |
+            </span>
             <a
               href="tel:775-412-1815"
-              className="text-sm hover:text-white transition-colors"
+              className="text-base hover:text-white transition-colors"
             >
               775-412-1815
             </a>
-            <span className="hidden sm:block text-zinc-700">|</span>
+            <span className="hidden sm:block text-zinc-700" aria-hidden="true">
+              |
+            </span>
             <a
               href="mailto:service@src-nv.co"
-              className="text-sm hover:text-white transition-colors"
+              className="text-base hover:text-white transition-colors"
             >
               service@src-nv.co
             </a>
           </div>
           <div className="flex flex-wrap justify-center gap-6 mb-8">
-            <Link href="/" className="text-sm text-zinc-500 hover:text-white transition-colors">
+            <Link
+              href="/"
+              className="text-base text-zinc-500 hover:text-white transition-colors"
+            >
               Home
             </Link>
-            <Link href="#services" className="text-sm text-zinc-500 hover:text-white transition-colors">
+            <Link
+              href="#services"
+              className="text-base text-zinc-500 hover:text-white transition-colors"
+            >
               Services
             </Link>
-            <Link href="#gallery" className="text-sm text-zinc-500 hover:text-white transition-colors">
+            <Link
+              href="#gallery"
+              className="text-base text-zinc-500 hover:text-white transition-colors"
+            >
               Our Work
             </Link>
-            <Link href="#faq" className="text-sm text-zinc-500 hover:text-white transition-colors">
+            <Link
+              href="#faq"
+              className="text-base text-zinc-500 hover:text-white transition-colors"
+            >
               FAQ
             </Link>
-            <Link href={CTA_HREF} className="text-sm text-accent hover:text-white transition-colors font-semibold">
+            <Link
+              href={CTA_HREF}
+              className="text-base text-accent hover:text-white transition-colors font-semibold"
+            >
               {CTA_LABEL}
             </Link>
           </div>
-          <p className="text-xs text-zinc-600">
-            &copy; {new Date().getFullYear()} Sierra Ridge Construction. All Rights Reserved.
+          <p className="text-base text-zinc-600">
+            &copy; {new Date().getFullYear()} Sierra Ridge Construction. All
+            Rights Reserved.
           </p>
         </div>
       </div>

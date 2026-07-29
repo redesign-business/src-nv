@@ -74,7 +74,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <ServicesSection />
         <GallerySection />
@@ -102,7 +102,7 @@ function Header() {
             priority
           />
         </Link>
-        <nav className="hidden lg:flex items-center gap-8 text-base font-medium text-zinc-700">
+        <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-8 text-base font-medium text-zinc-700">
           <Link href="/" className="hover:text-accent transition-colors">
             Home
           </Link>
